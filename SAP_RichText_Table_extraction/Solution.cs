@@ -12,17 +12,17 @@ namespace RText_to_Csv
     {
         public static void Convert(string TextFilePath, string CsvFilePath)
         {
-            string[] TextFileRead = System.IO.File.ReadAllLines(TextFilePath);
+            string[] TextFileRead = System.IO.File.ReadAllLines(TextFilePath); //Read txt File
             List<string> list = new List<string>(TextFileRead);
             List<string> file = new List<string>();
 
-            IEnumerable<int> dot = TextFileRead.ToList().Select(x => x.Split('-').Count());
-            int Maxdot = TextFileRead.ToList().Select(x => x.Split('-').Count()).Max();
+            IEnumerable<int> dot = TextFileRead.ToList().Select(x => x.Split('-').Count()); 
+            int Maxdot = TextFileRead.ToList().Select(x => x.Split('-').Count()).Max(); //Max line 
 
-            IEnumerable<bool> index = dot.ToList().Select(x => x.Equals(Maxdot));
-            int z = index.ToList().IndexOf(true);
+            IEnumerable<bool> index = dot.ToList().Select(x => x.Equals(Maxdot)); //get line have max count
+            int z = index.ToList().IndexOf(true); 
 
-            bool z2 = index.ToList()[z + 2];
+            bool z2 = index.ToList()[z + 2]; 
             int column = 0;
 
             if (z2.Equals(true))
@@ -30,10 +30,10 @@ namespace RText_to_Csv
                 column = TextFileRead.ToList()[z + 1].Split('|').Count();
             }
 
-            StreamWriter csv = File.CreateText(CsvFilePath);
+            StreamWriter csv = File.CreateText(CsvFilePath); //create .csv if not already created
             foreach (var item in list)
             {
-                string[] count = item.Split('|');
+                string[] count = item.Split('|'); //split row
 
                 if (count.Count() == column)
                 {
