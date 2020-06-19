@@ -1,4 +1,5 @@
-# SAP Rich Text file Table content Extraction
+# SAP Rich Text file Table content Extraction 
+`C#`, `RPA`, `Custom Coding`
 
 This project we will be extracting the inside table content only, from Rich text file and can be saved in .CSV File.
 
